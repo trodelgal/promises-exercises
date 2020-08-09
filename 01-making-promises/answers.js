@@ -6,7 +6,10 @@
  * @returns {Promise<3>}
  */
 function makePromiseResolveWith3(){
+  // const myPromise= new Promise((resolve, reject)=>{
+  //    })
   /* IMPLEMENT ME! */
+ return Promise.resolve(3) 
 }
 
 /**
@@ -16,7 +19,10 @@ function makePromiseResolveWith3(){
  * @returns {Promise<,"Boo!">}
  */
 function makePromiseRejectWithBoo(){
+  // const myPromise= new Promise((resolve, reject)=>{ 
+  // })
   /* IMPLEMENT ME! */
+ return Promise.reject('Boo!')
 }
 
 /**
