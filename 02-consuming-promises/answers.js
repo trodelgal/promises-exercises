@@ -7,6 +7,7 @@
  * 
  */
 function waitForPromise(promise, action){
+  promise.then(action)
   /* IMPLEMENT ME */
 }
 /**
@@ -18,6 +19,12 @@ function waitForPromise(promise, action){
  * @param {handler} handler 
  */
 function consumePromise(promise, consumer, handler){
+  promise.catch(resuit =>{
+    consumer(resuit) 
+  })
+  .catch(error=>{
+    handler(error)
+  })
   /* IMPLEMENT ME! */
 }
 

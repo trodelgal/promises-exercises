@@ -35,9 +35,12 @@ function makePromiseRejectWithBoo(){
 
 function makePromiseWithConstructor(itShouldResolve){
   return new Promise((resolve, reject) => {
+    itShouldResolve
     /* If itShouldResolve is true, call resolve */
     /* If itShouldResolve is false, call reject */
-  });
+  })
+  .than()
+  .catch()
 }
 
 /**
@@ -49,6 +52,10 @@ function makePromiseWithConstructor(itShouldResolve){
  * @return {Promise<any>} - A promise that will resolve with the value after delayInMs milliseconds
  */
 function makeDelayPromise(value, delayInMs){
+  return new Promise((resolve,reject)=>{
+  })
+  .than(value)
+  .than(delayInMs)
   /* Return a promise that resolves with the value after delayInMs */
 }
 
