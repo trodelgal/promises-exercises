@@ -8,9 +8,14 @@
  */
 function mapPromise(promise, transformer){
   return new Promise((resolve, reject) => {
-    /* IMPLEMENT ME!! */
-  });
-}
+  promise
+  .then(res => transformer(res))
+  .then(res2 => resolve(res2))
+  .catch(err => reject(err))
+  .catch(err => reject(err))
+  })
+};
+
 
 /**
  * 
@@ -20,8 +25,17 @@ function mapPromise(promise, transformer){
  * @returns {Promise<number>}
  */
 function squarePromise(numberPromise){
-  return numberPromise
-    .then(/* IMPLEMENT ME! */);
+  return new Promise((resolve, reject) => numberPromise
+    .then(res=>{
+      if(typeof(res)=="number"){
+        resolve(res*res)
+      }else if(!Number.isInteger(res)){
+        let num = parseInt(res);
+        if(Number.isInteger(num)) resolve(num**2);
+        else throw(`Cannot convert 'abc' to a number!`)
+      }
+    }).catch(err=>reject(err))
+    )
 }
 
 /**
@@ -32,8 +46,10 @@ function squarePromise(numberPromise){
  */
 function squarePromiseOrZero(promise){
   return squarePromise(promise)
-    .catch(/* IMPLEMENT ME! */);
+  .catch(err=>0)
+  .catch(err=>reject(err))
 }
+
 
 /**
  * EXERCISE 4
@@ -42,7 +58,17 @@ function squarePromiseOrZero(promise){
  * @returns {Promise}
  */
 function switcheroo(promise){
-  return promise.then(/* IMPLEMENT ME */);
+  return new Promise((resolve,reject)=>{
+    promise
+    .then(res=>{
+      reject(res)
+  })
+    .catch(err=>{
+      resolve(err)
+    })
+ 
+
+  });
 }
 
 /**

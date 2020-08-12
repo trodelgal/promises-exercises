@@ -19,12 +19,9 @@ function waitForPromise(promise, action){
  * @param {handler} handler 
  */
 function consumePromise(promise, consumer, handler){
-  promise.catch(resuit =>{
-    consumer(resuit) 
-  })
-  .catch(error=>{
-    handler(error)
-  })
+  promise.then(consumer) 
+  promise.catch(handler)
+  
   /* IMPLEMENT ME! */
 }
 
